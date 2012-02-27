@@ -1,7 +1,7 @@
 # Wordpress Import Script for SchnitzelPress
 
 ## Important
-This is highly unstable, but that shouldn't be a problem since this also applys to SchnitzelPress ;-)
+This is highly unstable, but that shouldn't be a problem since this also applies to SchnitzelPress ;-)
 Sadly, Markdown parsing doesn't work at the moment, but this will be in the next version. I'm already working on it.
 
 

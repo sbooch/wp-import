@@ -1,0 +1,38 @@
+# 1.8.7 compability
+require 'rubygems'
+
+# needed
+require 'rss/2.0'
+require 'rss/content'
+require 'schnitzelpress'
+
+# Schnitzelpress Wordpress Import
+# author: Sebastian Booch (@bashdy)
+# email: mail@sbooch.de
+# www.schnitzelpress.org
+
+# Enter the name of your exported Wordpress articles here (in WP, go to Tools - Export)
+# must be in the same folder as this script!
+source = "wordpress.xml"
+
+# pass your heroku uri or a the local mongodb here
+SchnitzelPress.mongo_uri=('mongodb://localhost/sbooch')
+
+content = ""
+
+open(source) do |s| content = s.read end
+rss = RSS::Parser.parse(content, false)
+
+i = 0
+
+while i < rss.items.size
+	SchnitzelPress::Post::create(
+		:title => rss.items[i].title, 
+		:body => rss.items[i].content_encoded, 
+		:published_at => rss.items[i].pubDate, 
+		:read_more => nil, 
+		:status => :published, 
+		:link => nil, 
+		:disqus => false)
+	i += 1
+end

@@ -1,3 +1,8 @@
+# Schnitzelpress Wordpress Import
+# author: Sebastian Booch (@bashdy)
+# email: mail@sbooch.de
+# www.schnitzelpress.org
+
 # 1.8.7 compability
 require 'rubygems'
 
@@ -5,11 +10,9 @@ require 'rubygems'
 require 'rss/2.0'
 require 'rss/content'
 require 'schnitzelpress'
+require 'downmark_it.rb'
 
-# Schnitzelpress Wordpress Import
-# author: Sebastian Booch (@bashdy)
-# email: mail@sbooch.de
-# www.schnitzelpress.org
+
 
 # Enter the name of your exported Wordpress articles here (in WP, go to Tools - Export)
 # must be in the same folder as this script!
@@ -25,10 +28,11 @@ rss = RSS::Parser.parse(content, false)
 
 i = 0
 
-while i < rss.items.size
+while i < rss.items.size 
+
 	SchnitzelPress::Post::create(
 		:title => rss.items[i].title, 
-		:body => rss.items[i].content_encoded, 
+		:body => DownmarkIt.to_markdown(rss.items[i].content_encoded), 
 		:published_at => rss.items[i].pubDate, 
 		:read_more => nil, 
 		:status => :published, 

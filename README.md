@@ -1,7 +1,7 @@
 # Wordpress Import Script for SchnitzelPress
 
 ## Important
-This is highly unstable, but that shouldn't be a problem since this also applys to SchnitzelPress ;-)
+This is highly unstable, but that shouldn't be a problem since this also applies to SchnitzelPress ;-)
 
 
 ## Updates
@@ -22,4 +22,8 @@ It's still a little experimental though, and you should check your imported post
 
 ## Specs
 This worked with WP 3.x, ruby 1.8.7, mongo 1.5.0, and schnitzelpress 0.1.1
+
+
+## License
+CC BY-NC-SA
 
